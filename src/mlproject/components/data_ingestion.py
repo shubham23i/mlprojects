@@ -20,7 +20,7 @@ class DataIngestion:
     def initiate_dataingestion(self):
         try:
             ## reading the data from mySQL
-            df=read_sql_data()
+            df=pd.read_csv(os.path.join('notebook/data','raw.csv'))
             logging.info('reading completed from mysql database')
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
             df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
